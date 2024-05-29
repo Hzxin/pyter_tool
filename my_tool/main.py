@@ -185,14 +185,14 @@ def run(DIRECTORY, BENCHMARK, PROJECT, IDX, LIST, ASSERT) :
         'salt-40465', 
         'Zappa-396'
     ]
+    pass_num = 0
+    total_project = 0
     try:
         pyfix_dir = "/pyter/pyter_tool" + ("/test_info" if not BENCHMARK else ("/" + BENCHMARK))
         lb = load_benchmarks.LoadBenchmarks()
         pytest_json = lb.load_pytest_info(pyfix_dir, DIRECTORY, PROJECT, IDX, ASSERT)
         result_path = DIRECTORY + "/result"
         total_project = len(pytest_json.keys())
-
-        pass_num = 0
 
         for project, pytest_info in pytest_json.items() :
             if ASSERT != '' and '-noassert' not in project :
@@ -338,7 +338,6 @@ def run(DIRECTORY, BENCHMARK, PROJECT, IDX, LIST, ASSERT) :
                 bench_list.append((project, 'INCORRECT', round(time.time() - start, 2)))
     except Exception as e:
         traceback.print_exc()
-
 
     return pass_num, total_project
 
