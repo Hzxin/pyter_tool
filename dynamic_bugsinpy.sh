@@ -8,6 +8,19 @@ if [ ! -d "$src_dir/pyter" ]; then
     mkdir pyter
 fi
 
+
+bug_info_path="$1/bugsinpy_bug.info"
+information=$(<${bug_info_path})
+information="$( cut -d '"' -f 2 <<< "$information" )";
+py_version=${information:0:5}
+env PYTHON_CONFIGURE_OPTS="--enable-shared" pyenv install -s ${py_version}
+pyenv virtualenv ${py_version} temp
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+source ~/.bashrc
+pyenv activate temp
+pyenv local temp
+
 subject=$(echo "$project" | cut -d '-' -f 1)
 if [[ $subject == *'fastapi'* ]]; then
         pip install pydantic
@@ -29,18 +42,6 @@ if [[ $subject == *'fastapi'* ]]; then
             pip install parameterized
     fi
 fi
-
-bug_info_path="$1/bugsinpy_bug.info"
-information=$(<${bug_info_path})
-information="$( cut -d '"' -f 2 <<< "$information" )";
-py_version=${information:0:5}
-pyenv install -s ${py_version}
-pyenv virtualenv ${py_version} temp
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-source ~/.bashrc
-pyenv activate temp
-pyenv local temp
 
 pip install -e /pyter/pyter_tool/pyannotate/.
 pip install pytest-timeouts
