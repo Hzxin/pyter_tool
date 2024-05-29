@@ -8,6 +8,28 @@ if [ ! -d "$src_dir/pyter" ]; then
     mkdir pyter
 fi
 
+subject=$(echo "$project" | cut -d '-' -f 1)
+if [[ $subject == *'fastapi'* ]]; then
+        pip install pydantic
+        pip install starlette==0.12.9
+        if [[ $project == *'fastapi-7'* ]]; then
+            pip install requests
+        fi
+    elif [[ $subject == *'luigi'* ]]; then
+        pip install mock
+    elif [[ $subject == *'scrapy'* ]]; then
+        if [[ $project == *'scrapy-1'* ]]; then
+            pip install pytest-twisted
+    
+        elif [[ $project == *'scrapy-20'* ]]; then
+            pip install testfixtures
+            pip install twisted==20.3.0
+        
+        elif [[ $project == *'scrapy-40'* ]]; then
+            pip install parameterized
+    fi
+fi
+
 bug_info_path="$1/bugsinpy_bug.info"
 information=$(<${bug_info_path})
 information="$( cut -d '"' -f 2 <<< "$information" )";
