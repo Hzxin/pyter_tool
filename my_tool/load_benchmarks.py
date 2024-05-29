@@ -12,10 +12,12 @@ class LoadBenchmarks() :
         if idx != "" :
             pytest_json_single = dict()
             name = project + "-" + idx + ("-noassert" if assertion != "" else "")
-            pytest_json_single[name] = pytest_json[name]
+            bug_name = pytest_json.get(name, None)
+            if bug_name:
+                pytest_json_single[name] = bug_name
 
             return pytest_json_single
-            
+        
         return pytest_json
 
             

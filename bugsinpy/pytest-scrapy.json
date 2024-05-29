@@ -8,8 +8,8 @@
         "neg" : [
             "--continue-on-collection-errors", 
             "--execution-timeout", "300",
-            "tests/test_spidermiddleware_offsite_neg.py::TestOffsiteMiddleware4::test_get_spiderargs",
-            "tests/test_spidermiddleware_offsite_neg.py::TestOffsiteMiddleware4::test_process_spider_output"
+            "tests/test_spidermiddleware_offsite.py::TestOffsiteMiddleware4::test_get_spiderargs",
+            "tests/test_spidermiddleware_offsite.py::TestOffsiteMiddleware4::test_process_spider_output"
         ]
     },
 

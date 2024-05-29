@@ -8,11 +8,11 @@ class MyAST() :
     def __init__(self, usage_file) :
         self.usage_file = usage_file
 
-    def files_to_asts(self, dir, project) :
+    def files_to_asts(self, dir) :
         asts = {}
         files_src = {}
 
-        for filename in glob.iglob(dir + '/' + project + "/**/*.py", recursive=True) :
+        for filename in glob.iglob(dir + "/**/*.py", recursive=True) :
             if not filename in self.usage_file : # 안쓰인 파일은 스킵
                 continue
 
@@ -29,8 +29,8 @@ class MyAST() :
         return asts, files_src
 
     # project/test_number 의 파일들을 읽어오는 것
-    def get_asts(self, dir, project) :
-        asts, files_src = self.files_to_asts(dir, project)
+    def get_asts(self, dir) :
+        asts, files_src = self.files_to_asts(dir)
 
         return asts, files_src
 

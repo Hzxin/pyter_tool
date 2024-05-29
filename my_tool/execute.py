@@ -6,7 +6,6 @@ import shutil
 class Execute() :
     def __init__(self, dir, project, pytest_info) :
         self.dir = dir
-
         self.project = project
         self.pytest_info = pytest_info
         self.pyenv_dir = '/home/wonseok/.pyenv'
@@ -14,7 +13,7 @@ class Execute() :
         self.airflow_init = False
 
     def execute_neg(self) :
-        os.chdir(self.dir + "/" + self.project)
+        os.chdir(self.dir)
 
         # project-version-subversion일 수도 있음
         project = self.project
@@ -28,7 +27,7 @@ class Execute() :
             project = project.replace('youtubedl', 'youtube-dl')
 
 
-        python_dir = self.pyenv_dir + '/versions/' + project + "/bin/python"
+        python_dir = self.pyenv_dir + '/versions/temp/bin/python'
         pytest_execute = [python_dir, '-m', 'pytest']
 
         if 'rasa' in project :
@@ -72,7 +71,7 @@ class Execute() :
         return out, err
 
     def execute_pos(self) :
-        os.chdir(self.dir + "/" + self.project)
+        os.chdir(self.dir)
 
         # project-version-subversion일 수도 있음
         project = self.project
@@ -84,7 +83,7 @@ class Execute() :
         if 'youtubedl' in project : 
             project = project.replace('youtubedl', 'youtube-dl')
 
-        python_dir = self.pyenv_dir + '/versions/' + project + "/bin/python"
+        python_dir = self.pyenv_dir + '/versions/temp/bin/python'
         pytest_execute = [python_dir, '-m', 'pytest']
 
         if 'rasa' in project :

@@ -20,7 +20,7 @@ def preprocessing(args) :
     nopos=""
     if args.nopos :
         nopos = "-nopos"
-    project = os.getcwd()[os.getcwd().rfind('/')+1:]
+    project = args.project
     project_name = project[:project.find('-')]
 
     if project_name == 'scikit' :
@@ -82,6 +82,7 @@ if __name__ == "__main__" :
     # argument는 원하는 만큼 추가한다.
     pyfix_parser.add_argument('--bench', type=str, help='bench name')
     pyfix_parser.add_argument('--nopos', type=str, help='no pos')
+    pyfix_parser.add_argument('--project', type=str, help='project')
     args = pyfix_parser.parse_args()
     
 

@@ -18,7 +18,7 @@ def running() :
 
 
 def preprocessing(args) :
-    project = os.getcwd()[os.getcwd().rfind('/')+1:]
+    project = args.project
     project_name = project[:project.find('-')]
 
     if project_name == 'scikit' :
@@ -26,8 +26,6 @@ def preprocessing(args) :
 
     directory = args.bench
     dir_name = directory + '/pytest-'+project_name+'.json'
-
-    
 
     with open(directory + '/pytest-'+project_name+'.json', 'r') as readfile :
         pytest_option = json.load(readfile)
@@ -38,7 +36,6 @@ def preprocessing(args) :
         nopos = '-nopos'
     else :
         test_option = pytest_option[project]['neg']
-
     del args
 
     test_methods = list()
@@ -96,6 +93,7 @@ if __name__ == "__main__" :
     # argument는 원하는 만큼 추가한다.
     parser.add_argument('--bench', type=str, help='bench name')
     parser.add_argument('--nopos', type=str, help='no pos')
+    parser.add_argument('--project', type=str, help='project name')
     args = parser.parse_args()
 
     preprocessing(args)

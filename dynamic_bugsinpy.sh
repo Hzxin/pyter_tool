@@ -1,28 +1,32 @@
 #! /bin/bash
 
-for project_folder in $(find /pyter/BugsInPy/benchmark -mindepth 1 -maxdepth 1 -print)
-do
-    if [[ ${project_folder} == *"${1}"* ]]; then 
-        cd ${project_folder}
+src_dir=$1
+project=$2
+cd "$src_dir"
 
-        #if [ -f "${project_folder}/pyfix/all.json" ]; then
-        #    continue
-        #fi
+if [ ! -d "$src_dir/pyter" ]; then
+    mkdir pyter
+fi
 
-        if [ ! -d "${project_folder}/pyter" ]; then
-            mkdir pyter
-        fi
+bug_info_path="$1/bugsinpy_bug.info"
+information=$(<${bug_info_path})
+information="$( cut -d '"' -f 2 <<< "$information" )";
+py_version=${information:0:5}
+pyenv install -s ${py_version}
+pyenv virtualenv ${py_version} temp
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+source ~/.bashrc
+pyenv activate temp
+pyenv local temp
 
+pip install -e /pyter/pyter_tool/pyannotate/.
+pip install pytest-timeouts
 
+/bugsinpy/framework/bin/bugsinpy-compile
 
-
-        python /pyter/pyter_tool/my_tool/extract_neg.py --bench="/pyter/pyter_tool/bugsinpy" --nopos=""
-        python /pyter/pyter_tool/my_tool/extract_pos.py --bench="/pyter/pyter_tool/bugsinpy" --nopos=""
-        #if [ ! -f "${project_folder}/pyfix/all.json" ]; then
-        #python /home/wonseok/pyfix/my_tool/extract_all.py --project ${1}
-        #fi
-    fi
-done
+python /pyter/pyter_tool/my_tool/extract_neg.py --bench="/pyter/pyter_tool/bugsinpy" --nopos="" --project=$project
+python /pyter/pyter_tool/my_tool/extract_pos.py --bench="/pyter/pyter_tool/bugsinpy" --nopos="" --project=$project
 
 
 
