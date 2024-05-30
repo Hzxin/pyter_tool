@@ -1,5 +1,5 @@
 {
-    "youtubedl-11" : {
+    "youtube-dl-11" : {
         "pos" : [
             "--continue-on-collection-errors", 
             "--execution-timeout", "300", 
@@ -13,7 +13,7 @@
         ]
     },
 
-    "youtubedl-11-noassert" : {
+    "youtube-dl-11-noassert" : {
         "pos" : [
             "--continue-on-collection-errors", 
             "--execution-timeout", "300", 
@@ -27,7 +27,7 @@
         ]
     },
 
-    "youtubedl-16" : {
+    "youtube-dl-16" : {
         "pos" : [
             "--continue-on-collection-errors", 
             "--execution-timeout", "300", 

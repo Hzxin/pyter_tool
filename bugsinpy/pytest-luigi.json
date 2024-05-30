@@ -8,7 +8,7 @@
         "neg" : [
             "--continue-on-collection-errors", 
             "--execution-timeout", "300",
-            "test/parameter_test.py::TestSerializeTupleParameter::test_Serialize"
+            "test/parameter_test_neg.py::TestSerializeTupleParameter::test_Serialize"
         ]
     },
 
@@ -21,7 +21,7 @@
         "neg" : [
             "--continue-on-collection-errors", 
             "--execution-timeout", "300",
-            "test/contrib/redshift_test.py::TestS3CopyToTable::test_s3_copy_with_nonetype_columns"
+            "test/contrib/redshift_test_neg.py::TestS3CopyToTable::test_s3_copy_with_nonetype_columns"
         ]
     },
 
@@ -34,7 +34,7 @@
         "neg" : [
             "--continue-on-collection-errors", 
             "--execution-timeout", "300",
-            "test/contrib/redshift_test.py::TestS3CopyToTable::test_s3_copy_with_nonetype_columns_noassert"
+            "test/contrib/redshift_test_neg.py::TestS3CopyToTable::test_s3_copy_with_nonetype_columns_noassert"
         ]
     },
 
@@ -47,8 +47,8 @@
         "neg" : [
             "--continue-on-collection-errors", 
             "--execution-timeout", "300",
-            "test/parameter_test.py::TestParametersHashability::test_list_dict",
-            "test/parameter_test.py::TestParametersHashability::test_tuple_dict"
+            "test/parameter_test_neg.py::TestParametersHashability::test_list_dict",
+            "test/parameter_test_neg.py::TestParametersHashability::test_tuple_dict"
         ]
     },
 
@@ -61,7 +61,7 @@
         "neg" : [
             "--continue-on-collection-errors", 
             "--execution-timeout", "300",
-            "test/central_planner_test.py::CentralPlannerTest::test_no_crash_on_only_disable_hard_timeout"
+            "test/central_planner_test_neg.py::CentralPlannerTest::test_no_crash_on_only_disable_hard_timeout"
         ]
     },
 
@@ -74,7 +74,7 @@
         "neg" : [
             "--continue-on-collection-errors", 
             "--execution-timeout", "300",
-            "test/scheduler_test.py::SchedulerTest::test_worker_prune_after_init"
+            "test/scheduler_test_neg.py::SchedulerTest::test_worker_prune_after_init"
         ]
     },
 
@@ -87,7 +87,7 @@
         "neg" : [
             "--continue-on-collection-errors", 
             "--execution-timeout", "300",
-            "test/contrib/redshift_test.py::TestS3CopyToTable::test_s3_copy_to_table"
+            "test/contrib/redshift_test_neg.py::TestS3CopyToTable::test_s3_copy_to_table"
         ]
     },
 
@@ -100,7 +100,7 @@
         "neg" : [
             "--continue-on-collection-errors", 
             "--execution-timeout", "300",
-            "test/contrib/redshift_test.py::TestS3CopyToTable::test_s3_copy_to_table_noassert"
+            "test/contrib/redshift_test_neg.py::TestS3CopyToTable::test_s3_copy_to_table_noassert"
         ]
     },
 
@@ -113,7 +113,7 @@
         "neg" : [
             "--continue-on-collection-errors", 
             "--execution-timeout", "300",
-            "test/contrib/hadoop_jar_test.py::HadoopJarJobTaskTest::test_missing_jar"
+            "test/contrib/hadoop_jar_test_neg.py::HadoopJarJobTaskTest::test_missing_jar"
         ]
     },
 
@@ -126,7 +126,7 @@
         "neg" : [
             "--continue-on-collection-errors", 
             "--execution-timeout", "300",
-            "test/contrib/hadoop_jar_test.py::HadoopJarJobTaskTest::test_missing_jar_noassert"
+            "test/contrib/hadoop_jar_test_neg.py::HadoopJarJobTaskTest::test_missing_jar_noassert"
         ]
     }
 }

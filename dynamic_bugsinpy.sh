@@ -21,6 +21,16 @@ source ~/.bashrc
 pyenv activate temp
 pyenv local temp
 
+project_folder=/pyter/bugsinpy_info/$project
+if [ -d "$project_folder" ]; then
+    for testfile in $(find $project_folder -name '*.py' -o -name '*.cfg' -o -name '*.ini')
+    do
+        testfile="$(realpath $testfile)"
+        direc="$( cut -d '/' -f 5- <<< "$testfile" )";
+        yes | cp $testfile $src_dir/$direc
+    done
+fi
+
 subject=$(echo "$project" | cut -d '-' -f 1)
 if [[ $subject == *'fastapi'* ]]; then
         pip install pydantic
@@ -33,11 +43,9 @@ if [[ $subject == *'fastapi'* ]]; then
     elif [[ $subject == *'scrapy'* ]]; then
         if [[ $project == *'scrapy-1'* ]]; then
             pip install pytest-twisted
-    
         elif [[ $project == *'scrapy-20'* ]]; then
             pip install testfixtures
             pip install twisted==20.3.0
-        
         elif [[ $project == *'scrapy-40'* ]]; then
             pip install parameterized
     fi
