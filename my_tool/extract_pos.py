@@ -24,8 +24,8 @@ def preprocessing(args) :
     project_name = project[:project.find('-')]
 
     if project_name == "youtube":
-        project_name = 'youtubedl'
-        
+        project_name = 'youtube-dl'
+
     if project_name == 'scikit' :
         project_name = 'scikit-learn'
 
